@@ -22,6 +22,12 @@
 * 	RESULT:
 * 	For each table you have in your specified database, a row of <textarea>
 * 	inputs will be created with the code you need to paste into the files!
+* 	Or you can tell Zend Model Creator to create all the files and folders for you
+* 	thus saving you the process of doing that as well. Just move the files into
+* 	your "models" folder.
+* 
+* 	For more information check out:
+* 	http://hussfelt.net/labs/zend-model-creator
 *
 * 	FUTURE!
 * 	We may add:
