@@ -30,6 +30,7 @@ class DTOCreatorService {
 		$this->_generateClassGettersSetters($parameterArray['fields']);
 		$this->_generateClassToArrayMethod($parameterArray['fields']);
 		$this->_generateClassToXmlMethod($parameterArray['fields'], $className);
+		$this->_generateClassToJsonMethod($parameterArray['fields'], $className);
 		$this->_generateClassBindMethod($parameterArray['fields'], $className);
 		$this->_generateClassDiffMethod($parameterArray['fields'], $className);
 		$this->_generateClassFooter();
@@ -216,6 +217,16 @@ class $className extends GenericDTO {
 		}
 		$this->_data .= "\t\t\$aOutput .= '</$className>';\n";
 		$this->_data .= "\t\treturn \$aOutput;\n";
+		$this->_data .= "\t}\n\n";
+	}
+
+	private function _generateClassToJsonMethod($params, $className) {
+		$this->_data .= "\t/**
+	 * Generates a JSON object dump of this objects properties
+	 * @return string json format
+ 	 */\n";
+		$this->_data .= "\tpublic function toJSON() {\n";
+		$this->_data .= "\t\treturn json_encode(\$this->_generateClassToArrayMethod());\n";
 		$this->_data .= "\t}\n\n";
 	}
 
