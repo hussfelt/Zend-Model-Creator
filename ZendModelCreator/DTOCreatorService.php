@@ -2,7 +2,7 @@
 /**
  * Code generator for DTO objects
  *
- * @author Fredrik Hellstrï¿½m
+ * @author Fredrik Hellstršm, Henrik Hussfelt
  * @since 2008-04-21
  *
  */
@@ -41,8 +41,8 @@ class DTOCreatorService {
 /**
  * $className Data Transfer Object
  *
- * @author ZendModelCreator ".ZendModelCreator::getVersion().", Fredrik HellstrÃ¶m - Jersey Consulting AB
- * @licence GNU/GPL V 1.0
+ * @author ZendModelCreator ".ZendModelCreator::getVersion()."
+ * @licence GNU/GPL V 2.0
  * @contact ".ZendModelCreator::getContact()."
  * @since " . date("Y-m-d") . "
  *

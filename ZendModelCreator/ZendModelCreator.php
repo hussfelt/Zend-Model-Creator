@@ -1,8 +1,8 @@
 <?php
 /**
-* @version		$Id: ZendModelCreator.php 123 2008-09-16 13:35:53Z hussfelt $
+* @version		1.5.2 ZendModelCreator.php hussfelt
 * @package		ZendModelCreator
-* @copyright	Copyright (C) 2005 - 2008 Hussfelt Consulting AB. All rights reserved.
+* @copyright	Copyright (C) 2005 - 2011 Hussfelt Consulting AB. All rights reserved.
 * @license		GNU/GPL V 1.0
 * This is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or

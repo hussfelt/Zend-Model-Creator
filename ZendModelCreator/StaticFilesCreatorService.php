@@ -93,7 +93,7 @@ class StaticFilesCreatorService {
  * $className
  *
  * @author ZendModelCreator ".ZendModelCreator::getVersion()."
- * @licence GNU/GPL V 1.0
+ * @licence GNU/GPL V 2.0
  * @contact ".ZendModelCreator::getContact()."
  * @since " . date("Y-m-d") . "
  *
