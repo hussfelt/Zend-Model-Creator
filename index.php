@@ -36,6 +36,10 @@
 *
 *	CHANGELOG:
 *
+*	  	20110601 - Version 1.5.3
+*  			- Changed behaviour to support tables with letter s in the end, thanks to Rafael Beckel!
+*  			- Added function toJSON in DTO
+*  
 * 		20091206 - Version 1.5.2
 * 			- Migrated fetchAll function in DAOCreatorService to use a slightly different fecth method.
 * 			  This will make it much easier to join other tables to the SQL statement and then build these
