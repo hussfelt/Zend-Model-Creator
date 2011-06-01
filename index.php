@@ -153,7 +153,7 @@ $ZendModelCreator->setDirectoryStructure(
  * Either runt getPHPCreatedModelData to get the
  * data for each file outputted in an HTML <textarea> element.
  */
-//$ZendModelCreator->getPHPCreatedModelData();
+//echo $ZendModelCreator->getPHPCreatedModelData();
 
 /**
  * Or run writePHPCreatedModelData to write all php-files

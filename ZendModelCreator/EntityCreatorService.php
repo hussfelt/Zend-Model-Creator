@@ -17,10 +17,10 @@ class EntityCreatorService {
 	 * @return string formatted code ready to use
 	 * 
 	 */
-	public function createEntity($className, $parameterArray) {
+	public function createEntity($className, $parameterArray, $tableName) {
 		$this->_generateClassHeader($className);
 		$this->_setPrimaryKey($parameterArray['primary_key']);
-		$this->_generateProtected($className);
+		$this->_generateProtected($tableName);
 		$this->_generateClassFooter();
 		return $this->_data;
 	}
@@ -49,8 +49,8 @@ class ".ucfirst(strtolower($className))."Entity extends GenericEntity {
 ";
 	}
 
-	private function _generateProtected($className) {
-		$this->_data .= "\tprotected \$_name\t= '".$className."';\n";
+	private function _generateProtected($tableName) {
+		$this->_data .= "\tprotected \$_name\t= '".$tableName."';\n";
 		$this->_data .= "\tprotected \$_primary\t= '".$this->primary_key."';\n";
 	}
 
