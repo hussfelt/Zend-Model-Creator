@@ -49,7 +49,7 @@ class ErrorConstants {
 	private function _generateClassFooter() {
 		$this->_data .= "
 }
-?>";
+";
 	}
 }
 ?>

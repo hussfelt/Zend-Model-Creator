@@ -66,6 +66,13 @@ class ".$className."DAO extends GenericDAO {
 	private function _generateFetchAll($className,$params) {
 		$low_className = strtolower($className);
 		// Set fetchAll function headers
+		$this->_data.="\t/**\n";
+		$this->_data.="\t/* Will fetch all records for $className and return array of object's\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/* @params \$where, \$order, \$count \$offset\n";
+		$this->_data.="\t/* @return array $".strtolower($className)."DTOs\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/**/\n";
 		$this->_data.="\tpublic static function fetchAll".'($where = null, $order = null, $count = null, $offset = null) {'."\n";
 		$this->_data.="\t\t// Initial Entities to get params from\n";
 		$this->_data.="\t\t$".$className."Entity = new ".$className."Entity();\n";
@@ -146,6 +153,13 @@ class ".$className."DAO extends GenericDAO {
 	private function _generateFetch($className,$params) {
 		// Set fetch function headers
 		$className = ucfirst(strtolower($className));
+		$this->_data.="\t/**\n";
+		$this->_data.="\t/* Will fetch one record for $className and return object\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/* @param \$$this->primary_key)\n";
+		$this->_data.="\t/* @return object $".strtolower($className)."DTO\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/**/\n";
 		$this->_data.="\tpublic static function fetch(\$$this->primary_key) {\n";
 		$this->_data.="\t\t$".$className."Entity = new ".$className."Entity();\n";
 		$this->_data.="\t\t".'$row = $'.$className.'Entity->fetchRow($'.$className."Entity->select()->where('".$this->primary_key." = ?', \$$this->primary_key));\n";
@@ -177,6 +191,13 @@ class ".$className."DAO extends GenericDAO {
 	private function _generateInsert($className,$params) {
 		// Set fetch function headers
 		$className = ucfirst(strtolower($className));
+		$this->_data.="\t/**\n";
+		$this->_data.="\t/* Creates a new row in the $className table\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/* @param $".strtolower($className)."DTO\n";
+		$this->_data.="\t/* @return int \$$this->primary_key)\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/**/\n";
 		$this->_data.="\tpublic static function create($className \$".strtolower($className).") {\n";
 		$this->_data.="\t\t$".$className."Entity = new ".$className."Entity();\n";
 		$this->_data.="\t\t\$data = array(\n";
@@ -211,6 +232,13 @@ class ".$className."DAO extends GenericDAO {
 	private function _generateUpdate($className,$params) {
 		// Set fetch function headers
 		$className = ucfirst(strtolower($className));
+		$this->_data.="\t/**\n";
+		$this->_data.="\t/* Updates a row in the $className table\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/* @param object $".strtolower($className)."DTO\n";
+		$this->_data.="\t/* @return object $".strtolower($className)."DTO\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/**/\n";
 		$this->_data.="\tpublic static function update($className \$".strtolower($className).") {\n";
 		$this->_data.="\t\t$".$className."Entity = new ".$className."Entity();\n";
 		$this->_data.="\t\t\$data = array(\n";
@@ -238,13 +266,19 @@ class ".$className."DAO extends GenericDAO {
 		$this->_data.= substr($tmpdata,0,-2);
 		$this->_data.="\n\t\t);\n";
 		$this->_data.="\t\treturn $".$className."Entity->update(\$data, '$this->primary_key = '.\$".strtolower($className).'->get'.ucfirst($this->primary_key)."());\n";
-		//$bookingEntity->update($data, 'booking_id = '.$booking->getBooking_id());
 		$this->_data.="\t}\n\n";
 	}
 
 	private function _generateDelete($className) {
 		// Set fetch function headers
 		$className = ucfirst(strtolower($className));
+		$this->_data.="\t/**\n";
+		$this->_data.="\t/* Deletes a row in the $className table\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/* @param int \$$this->primary_key\n";
+		$this->_data.="\t/* @return bool\n";
+		$this->_data.="\t/*\n";
+		$this->_data.="\t/**/\n";
 		$this->_data.="\tpublic static function delete(\$$this->primary_key) {\n";
 		$this->_data.="\t\t$".$className."Entity = new ".$className."Entity();\n";
 		$this->_data.="\t\treturn $".$className."Entity->delete('$this->primary_key = '.\$$this->primary_key);\n";
@@ -254,7 +288,7 @@ class ".$className."DAO extends GenericDAO {
 	private function _generateClassFooter() {
 		$this->_data .= "
 }
-?>";
+";
 	}
 }
 ?>

@@ -135,7 +135,7 @@ class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolowe
 	private function _generateClassFooter() {
 		$this->_data .= "
 }
-?>";
+";
 	}
 }
 ?>

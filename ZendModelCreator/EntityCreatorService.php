@@ -57,7 +57,7 @@ class ".ucfirst(strtolower($className))."Entity extends GenericEntity {
 	private function _generateClassFooter() {
 		$this->_data .= "
 }
-?>";
+";
 	}
 }
 ?>

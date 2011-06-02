@@ -300,7 +300,7 @@ class $className extends GenericDTO {
 	private function _generateClassFooter() {
 		$this->_data .= "
 }
-?>";
+";
 	}
 }
 ?>

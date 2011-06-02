@@ -275,7 +275,7 @@ class SystemConfig {
 	private function _generateClassFooter() {
 		$this->_data .= "
 }
-?>";
+";
 	}
 }
 ?>

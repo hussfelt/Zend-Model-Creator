@@ -55,7 +55,7 @@ interface I".ucfirst($className)."Service {
 	private function _generateClassFooter() {
 		$this->_data .= "
 }
-?>";
+";
 	}
 }
 ?>

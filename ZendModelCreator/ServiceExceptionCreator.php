@@ -56,7 +56,7 @@ class ".ucfirst(strtolower($className))."ServiceException extends Exception {
 	private function _generateClassFooter() {
 		$this->_data .= "
 }
-?>";
+";
 	}
 }
 ?>
