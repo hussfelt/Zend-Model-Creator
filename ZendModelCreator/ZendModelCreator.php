@@ -137,15 +137,11 @@ class ZendModelCreator {
 
 	public function getDataFromServices() {
 		foreach (self::$tables as $table => $data) {
-			$tableIni = $table;
 			// clean interface array
 			foreach ($this->getSetting('types') as $type => $get_data) {
 				if($get_data) {
 					// Quit if no primary key is set.
 					if (isset($data['primary_key'])) {
-						if (substr($table,-1) == "s") {
-							$table = substr($table,0,-1);
-						}
 						// set object names to Ucfirst then lowercase.
 						$table = ucfirst(strtolower($table));
 						switch ($type) {
@@ -159,7 +155,7 @@ class ZendModelCreator {
 								break;
 							case "create_entity":
 								$EntityService = new EntityCreatorService();
-								$this->_data[$table]['ENT'] = $EntityService->createEntity($table,$data,$tableIni);
+								$this->_data[$table]['ENT'] = $EntityService->createEntity($table,$data);
 								break;
 							case "create_service":
 								$ServiceService = new ServiceCreatorService();

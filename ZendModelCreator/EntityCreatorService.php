@@ -17,10 +17,10 @@ class EntityCreatorService {
 	 * @return string formatted code ready to use
 	 * 
 	 */
-	public function createEntity($className, $parameterArray, $tableName) {
+	public function createEntity($className, $parameterArray) {
 		$this->_generateClassHeader($className);
 		$this->_setPrimaryKey($parameterArray['primary_key']);
-		$this->_generateProtected($tableName);
+		$this->_generateProtected($className);
 		$this->_generateClassFooter();
 		return $this->_data;
 	}
