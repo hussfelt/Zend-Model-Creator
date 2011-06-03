@@ -111,9 +111,9 @@ $SETTINGS['types']['create_genericfiles'] = true;
 
 // MySQL settings
 $SETTINGS['mysql_host'] = "localhost";
-$SETTINGS['mysql_user'] = "";
-$SETTINGS['mysql_password'] = "";
-$SETTINGS['mysql_db'] = "";
+$SETTINGS['mysql_user'] = "root";
+$SETTINGS['mysql_password'] = "123123";
+$SETTINGS['mysql_db'] = "romancify";
 
 // Setup the model creator service with our specified settings
 $ZendModelCreator = new ZendModelCreator($SETTINGS);

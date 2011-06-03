@@ -38,21 +38,22 @@ class ServiceCreatorService {
 		$folderName = strtolower($className);
 		$this->_data .= "<?php
 /**
- *Implementation of $className Service
- *
- * @author ZendModelCreator ".ZendModelCreator::getVersion()."
- * @licence GNU/GPL V 2.0
- * @contact ".ZendModelCreator::getContact()."
- * @since " . date("Y-m-d") . "
- *
- */
+* Implementation of $className Service
+*
+* @author ZendModelCreator ".ZendModelCreator::getVersion()."
+* @licence GNU/GPL V 2.0
+* @contact ".ZendModelCreator::getContact()."
+* @since " . date("Y-m-d") . "
+*
+**/
 
 require_once('$folderName/".ZendModelCreator::$directoryStructure['DirectoryStructure']['DTO']."/".str_replace("[tbl]",ucfirst(strtolower($className)),ZendModelCreator::$directoryStructure['FileNames']['INT'])."');
 require_once('$folderName/".ZendModelCreator::$directoryStructure['DirectoryStructure']['DAO']."/".str_replace("[tbl]",ucfirst(strtolower($className)),ZendModelCreator::$directoryStructure['FileNames']['DAO'])."');
 require_once('$folderName/".ZendModelCreator::$directoryStructure['DirectoryStructure']['EXC']."/".str_replace("[tbl]",ucfirst(strtolower($className)),ZendModelCreator::$directoryStructure['FileNames']['EXC'])."');
 require_once('".ZendModelCreator::$directoryStructure['DirectoryStructure']['CON']."/ErrorConstants.php');
 
-class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolower($className))."Service {
+class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolower($className))."Service
+{
 
 ";
 	}
@@ -62,7 +63,14 @@ class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolowe
 		// add to interface queue
 		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function retrieve$className(\$$this->primary_key);\n";
 		ZendModelCreator::$errorconstants["ErrorConstants::RETRIEVE_".strtoupper($className)."_ERROR"] = "RETRIEVE_".strtoupper($className)."_ERROR";
-		$this->_data.="\tpublic static function retrieve$className(\$$this->primary_key) {\n";
+		$this->_data.="\t/**\n";
+		$this->_data.="\t* Retrieve a row as object from the database\n";
+		$this->_data.="\t*\n";
+		$this->_data.="\t* @param \$$this->primary_key\n";
+		$this->_data.="\t* @return object ".$className."DTO\n";
+		$this->_data.="\t**/\n";
+		$this->_data.="\tpublic static function retrieve$className(\$$this->primary_key)\n";
+		$this->_data.="\t{\n";
 		$this->_data.="\t\ttry {\n";
 		$this->_data.="\t\t\treturn $className"."DAO::fetch(\$$this->primary_key);\n";
 		$this->_data.="\t\t} catch (Exception \$e) {\n";
@@ -75,9 +83,16 @@ class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolowe
 	private function _generateRetrieves($className) {
 		$className = ucfirst(strtolower($className));
 		// add to interface queue
-		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function retrieve$className"."s( \$where=null, \$order=null, \$count=null, \$offset=null );\n";
+		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function retrieve$className"."s(\$where=null, \$order=null, \$count=null, \$offset=null);\n";
 		ZendModelCreator::$errorconstants["ErrorConstants::RETRIEVE_".strtoupper($className)."_ERROR"] = "RETRIEVE_".strtoupper($className)."_ERROR";
-		$this->_data.="\tpublic static function retrieve$className"."s( \$where=null, \$order=null, \$count=null, \$offset=null ) {\n";
+		$this->_data.="\t/**\n";
+		$this->_data.="\t* Retrieve a set of rows as objects from the database\n";
+		$this->_data.="\t*\n";
+		$this->_data.="\t* @param \$where=null, \$order=null, \$count=null, \$offset=null\n";
+		$this->_data.="\t* @return array ".$className."DTOs\n";
+		$this->_data.="\t**/\n";
+		$this->_data.="\tpublic static function retrieve$className"."s( \$where=null, \$order=null, \$count=null, \$offset=null )\n";
+		$this->_data.="\t{\n";
 		$this->_data.="\t\ttry {\n";
 		$this->_data.="\t\t\treturn $className"."DAO::fetchAll( \$where, \$order, \$count, \$offset );\n";
 		$this->_data.="\t\t} catch (Exception \$e) {\n";
@@ -90,9 +105,16 @@ class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolowe
 	private function _generateCreate($className) {
 		$className = ucfirst(strtolower($className));
 		// add to interface queue
-		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function create$className( $className $".strtolower($className)." );\n";
+		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function create$className($className $".strtolower($className).");\n";
 		ZendModelCreator::$errorconstants["ErrorConstants::CREATE_".strtoupper($className)."_ERROR"] = "CREATE_".strtoupper($className)."_ERROR";
-		$this->_data.="\tpublic static function create$className( $className $".strtolower($className)." ) {\n";
+		$this->_data.="\t/**\n";
+		$this->_data.="\t* Create a row in the database from a ".$className."DTO\n";
+		$this->_data.="\t*\n";
+		$this->_data.="\t* @param object $className $".strtolower($className)."\n";
+		$this->_data.="\t* @return bool\n";
+		$this->_data.="\t**/\n";
+		$this->_data.="\tpublic static function create$className( $className $".strtolower($className)." )\n";
+		$this->_data.="\t{\n";
 		$this->_data.="\t\ttry {\n";
 		$this->_data.="\t\t\treturn $className"."DAO::create( $".strtolower($className)." );\n";
 		$this->_data.="\t\t} catch (Exception \$e) {\n";
@@ -105,9 +127,16 @@ class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolowe
 	private function _generateUpdate($className) {
 		$className = ucfirst(strtolower($className));
 		// add to interface queue
-		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function update$className( $className $".strtolower($className)." );\n";
+		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function update$className($className $".strtolower($className).");\n";
 		ZendModelCreator::$errorconstants["ErrorConstants::UPDATE_".strtoupper($className)."_ERROR"] = "UPDATE_".strtoupper($className)."_ERROR";
-		$this->_data.="\tpublic static function update$className( $className $".strtolower($className)." ) {\n";
+		$this->_data.="\t/**\n";
+		$this->_data.="\t* Update a row in the database from a ".$className."DTO\n";
+		$this->_data.="\t*\n";
+		$this->_data.="\t* @param object $className $".strtolower($className)."\n";
+		$this->_data.="\t* @return bool\n";
+		$this->_data.="\t**/\n";
+		$this->_data.="\tpublic static function update$className( $className $".strtolower($className)." )\n";
+		$this->_data.="\t{\n";
 		$this->_data.="\t\ttry {\n";
 		$this->_data.="\t\t\treturn $className"."DAO::update( $".strtolower($className)." );\n";
 		$this->_data.="\t\t} catch (Exception \$e) {\n";
@@ -120,9 +149,16 @@ class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolowe
 	private function _generateDelete($className) {
 		$className = ucfirst(strtolower($className));
 		// add to interface queue
-		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function delete$className( $".$this->primary_key." );\n";
+		ZendModelCreator::$interface[strtolower($className)][] = "\tpublic static function delete$className($".$this->primary_key.");\n";
 		ZendModelCreator::$errorconstants["ErrorConstants::DELETE_".strtoupper($className)."_ERROR"] = "DELETE_".strtoupper($className)."_ERROR";
-		$this->_data.="\tpublic static function delete$className( $".$this->primary_key." ) {\n";
+		$this->_data.="\t/**\n";
+		$this->_data.="\t* Delete a row in the database by primary key\n";
+		$this->_data.="\t*\n";
+		$this->_data.="\t* @param int $".$this->primary_key . "\n";
+		$this->_data.="\t* @return bool\n";
+		$this->_data.="\t**/\n";
+		$this->_data.="\tpublic static function delete$className( $".$this->primary_key." )\n";
+		$this->_data.="\t{\n";
 		$this->_data.="\t\ttry {\n";
 		$this->_data.="\t\t\treturn $className"."DAO::delete( $".$this->primary_key." );\n";
 		$this->_data.="\t\t} catch (Exception \$e) {\n";

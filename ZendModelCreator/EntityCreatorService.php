@@ -33,18 +33,19 @@ class EntityCreatorService {
 		$className = strtolower($className);
 		$this->_data .= "<?php
 /**
- * Entity mapping class for $className
- * 
- * @author ZendModelCreator ".ZendModelCreator::getVersion()."
- * @licence GNU/GPL V 2.0
- * @contact ".ZendModelCreator::getContact()."
- * @since " . date("Y-m-d") . "
- *
- */
+* Entity mapping class for $className
+* 
+* @author ZendModelCreator ".ZendModelCreator::getVersion()."
+* @licence GNU/GPL V 2.0
+* @contact ".ZendModelCreator::getContact()."
+* @since " . date("Y-m-d") . "
+*
+**/
 
 require_once('db/GenericEntity.php');
 
-class ".ucfirst(strtolower($className))."Entity extends GenericEntity {
+class ".ucfirst(strtolower($className))."Entity extends GenericEntity
+{
 
 ";
 	}

@@ -25,16 +25,17 @@ class ErrorconstantsCreatorService {
 	private function _generateClassHeader() {
 		$this->_data .= "<?php
 /**
- * ErrorContants used in the application
- * 
- * @author ZendModelCreator ".ZendModelCreator::getVersion()."
- * @licence GNU/GPL V 2.0
- * @contact ".ZendModelCreator::getContact()."
- * @since " . date("Y-m-d") . "
- *
- */
+* ErrorContants used in the application
+* 
+* @author ZendModelCreator ".ZendModelCreator::getVersion()."
+* @licence GNU/GPL V 2.0
+* @contact ".ZendModelCreator::getContact()."
+* @since " . date("Y-m-d") . "
+*
+**/
 
-class ErrorConstants {
+class ErrorConstants
+{
 ";
 	}
 

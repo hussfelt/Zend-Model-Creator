@@ -40,34 +40,36 @@ class DTOCreatorService {
 	private function _generateClassHeader($className) {
 		$this->_data .= "<?php
 /**
- * $className Data Transfer Object
- *
- * @author ZendModelCreator ".ZendModelCreator::getVersion()."
- * @licence GNU/GPL V 2.0
- * @contact ".ZendModelCreator::getContact()."
- * @since " . date("Y-m-d") . "
- *
- */
+* $className Data Transfer Object
+*
+* @author ZendModelCreator ".ZendModelCreator::getVersion()."
+* @licence GNU/GPL V 2.0
+* @contact ".ZendModelCreator::getContact()."
+* @since " . date("Y-m-d") . "
+*
+**/
 
 require_once('db/GenericDTO.php');
 
-class $className extends GenericDTO {
+class $className extends GenericDTO
+{
 
 ";
 	}
 
 	private function _generateClassConstructor($className) {
-		$this->_data .= "\t/**
-	 * Constructor
- 	 */\n";
-		$this->_data .= "\tpublic function $className() {\n";
+		$this->_data .= "\t/**\n";
+		$this->_data .= "\t* Constructor\n";
+ 	 	$this->_data .= "\t*/\n";
+		$this->_data .= "\tpublic function $className()\n";
+		$this->_data .= "\t{\n";
 		$this->_data .= "\t}\n\n";
 	}
 
 	private function _generateClassDeclarations($params) {
-		$this->_data .= "\t/**
-	 * Class declarations
- 	 */\n";
+		$this->_data .= "\t/**\n";
+		$this->_data .= "\t* Class declarations\n";
+		$this->_data .= "\t*/\n";
 		foreach ($params as $param) {
 			foreach ($param as $name => $type) {
 				switch ($type) {
@@ -99,10 +101,10 @@ class $className extends GenericDTO {
 		if ($type == self::$DATETIME) {
 			$type = 'GenericDateTime';
 		}
-		$data = "\t/**
-	 * Gets the $name property
-	 * @return $type the $name
-	 */\n";
+		$data = "\t/**\n";
+		$data .= "\t* Gets the $name property\n";
+		$data .= "\t* @return $type the $name\n";
+		$data .= "\t*/\n";
 		return $data;
 	}
 
@@ -110,11 +112,11 @@ class $className extends GenericDTO {
 		if ($type == self::$DATETIME) {
 			$type = 'GenericDateTime';
 		}
-		$data = "\t/**
-	 * Sets the $name property
-	 * @param $type the $name to set
-	 * @return void
-	 */\n";
+		$data = "\t/**\n";
+		$data .= "\t* Sets the $name property\n";
+		$data .= "\t* @param $type the $name to set\n";
+		$data .= "\t* @return void\n";
+		$data .= "\t*/\n";
 		return $data;
 	}
 
@@ -124,60 +126,70 @@ class $className extends GenericDTO {
 				switch ($type) {
 					case self::$STRING:
 						$this->_data .= $this->_getGetComment($type, $name);
-						$this->_data .= "\tpublic function get".ucfirst($name)."() {\n";
+						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
 						$this->_data .= $this->_getSetComment($type, $name);
-						$this->_data .= "\tpublic function set".ucfirst($name)."($$name) {\n";
+						$this->_data .= "\tpublic function set".ucfirst($name)."($$name)\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
 						$this->_data .= "\n\t}\n\n";
 						break;
 
 					case self::$INTEGER:
 						$this->_data .= $this->_getGetComment($type, $name);
-						$this->_data .= "\tpublic function get".ucfirst($name)."() {\n";
+						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
 						$this->_data .= $this->_getSetComment($type, $name);
-						$this->_data .= "\tpublic function set".ucfirst($name)."($$name) {\n";
+						$this->_data .= "\tpublic function set".ucfirst($name)."($$name)\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
 						$this->_data .= "\n\t}\n\n";
 						break;
 
 					case self::$DATETIME:
 						$this->_data .= $this->_getGetComment($type, $name);
-						$this->_data .= "\tpublic function get".ucfirst($name)."() {\n";
+						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
 						$this->_data .= $this->_getSetComment($type, $name);
-						$this->_data .= "\tpublic function set".ucfirst($name)."(GenericDateTime $$name) {\n";
+						$this->_data .= "\tpublic function set".ucfirst($name)."(GenericDateTime $$name)\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
 						$this->_data .= "\n\t}\n\n";
 						break;
 
 					case self::$DOUBLE:
 						$this->_data .= $this->_getGetComment($type, $name);
-						$this->_data .= "\tpublic function get".ucfirst($name)."() {\n";
+						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
 						$this->_data .= $this->_getSetComment($type, $name);
-						$this->_data .= "\tpublic function set".ucfirst($name)."($$name) {\n";
+						$this->_data .= "\tpublic function set".ucfirst($name)."($$name)\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
 						$this->_data .= "\n\t}\n\n";
 						break;
 
 					case self::$ARRAY:
 						$this->_data .= $this->_getGetComment($type, $name);
-						$this->_data .= "\tpublic function get".ucfirst($name)."() {\n";
+						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
 						$this->_data .= $this->_getSetComment($type, $name);
-						$this->_data .= "\tpublic function set".ucfirst($name)."(array $$name) {\n";
+						$this->_data .= "\tpublic function set".ucfirst($name)."(array $$name)\n";
+						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
 						$this->_data .= "\n\t}\n\n";
 						break;
@@ -188,11 +200,12 @@ class $className extends GenericDTO {
 	}
 
 	private function _generateClassToArrayMethod($params) {
-		$this->_data .= "\t/**
-	 * Generates an array dump of this objects properties
-	 * @return array an array of strings
- 	 */\n";
-		$this->_data .= "\tpublic function toArray() {\n";
+		$this->_data .= "\t/**\n";
+		$this->_data .= "\t* Generates an array dump of this objects properties\n";
+		$this->_data .= "\t* @return array an array of strings\n";
+		$this->_data .= "\t*/\n";
+		$this->_data .= "\tpublic function toArray()\n";
+		$this->_data .= "\t{\n";
 		$this->_data .= "\t\t\$aOutput = array();\n";
 		foreach ($params as $param) {
 			foreach ($param as $name => $type) {
@@ -204,11 +217,12 @@ class $className extends GenericDTO {
 	}
 
 	private function _generateClassToXmlMethod($params, $className) {
-		$this->_data .= "\t/**
-	 * Generates an XML array dump of this objects properties
-	 * @return string xml format
- 	 */\n";
-		$this->_data .= "\tpublic function toXML() {\n";
+		$this->_data .= "\t/**\n";
+		$this->_data .= "\t* Generates an XML array dump of this objects properties\n";
+		$this->_data .= "\t* @return string xml format\n";
+		$this->_data .= "\t*/\n";
+		$this->_data .= "\tpublic function toXml()\n";
+		$this->_data .= "\t{\n";
 		$this->_data .= "\t\t\$aOutput = '<$className>';\n";
 		foreach ($params as $param) {
 			foreach ($param as $name => $type) {
@@ -221,21 +235,24 @@ class $className extends GenericDTO {
 	}
 
 	private function _generateClassToJsonMethod($params, $className) {
-		$this->_data .= "\t/**
-	 * Generates a JSON object dump of this objects properties
-	 * @return string json format
- 	 */\n";
-		$this->_data .= "\tpublic function toJSON() {\n";
-		$this->_data .= "\t\treturn json_encode(\$this->_generateClassToArrayMethod());\n";
+		$this->_data .= "\t/**\n";
+		$this->_data .= "\t* Generates a JSON object dump of this objects properties\n";
+		$this->_data .= "\t* @return string json format\n";
+		$this->_data .= "\t*/\n";
+		$this->_data .= "\tpublic function toJson()\n";
+		$this->_data .= "\t{\n";
+		$this->_data .= "\t\treturn json_encode(\$this->toArray());\n";
 		$this->_data .= "\t}\n\n";
 	}
 
 	private function _generateClassBindMethod($params) {
-		$this->_data .= "\t/**
-	 * Binds input array to object with getters and setters
-	 * @return bool true
- 	 */\n";
-		$this->_data .= "\tpublic function bind(\$aData) {\n";
+		$this->_data .= "\t/**\n";
+		$this->_data .= "\t* Binds input array to object with getters and setters\n";
+		$this->_data .= "\t* @param array \$aData\n";
+		$this->_data .= "\t* @return bool true\n";
+		$this->_data .= "\t*/\n";
+		$this->_data .= "\tpublic function bind(\$aData)\n";
+		$this->_data .= "\t{\n";
 		foreach ($params as $param) {
 			foreach ($param as $name => $type) {
 				$this->_data .= "\t\tif(isset(\$aData['$name'])) {\n";
@@ -264,12 +281,14 @@ class $className extends GenericDTO {
 	}
 
 	private function _generateClassDiffMethod($params) {
-		$this->_data .= "\t/**
-	 * Checks the current object values and compares them to the given array,
-	 * returns array with changes
-	 * @return array an array of difference
- 	 */\n";
-		$this->_data .= "\tpublic function diff(\$aCompare) {\n";
+		$this->_data .= "\t/**\n";
+		$this->_data .= "\t* Checks the current object values and compares them to the given array,\n";
+		$this->_data .= "\t* returns array with changes\n";
+		$this->_data .= "\t* @param array \$aCompare\n";
+		$this->_data .= "\t* @return array an array of difference\n";
+		$this->_data .= "\t*/\n";
+		$this->_data .= "\tpublic function diff(\$aCompare)\n";
+		$this->_data .= "\t{\n";
 		$this->_data .= "\t\t\$aDiff = array();\n";
 		foreach ($params as $param) {
 			foreach ($param as $name => $type) {

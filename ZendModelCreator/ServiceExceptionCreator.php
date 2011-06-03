@@ -26,16 +26,17 @@ class ServiceExceptionCreatorService {
 		$className = strtolower($className);
 		$this->_data .= "<?php
 /**
- * $className"."ServiceException extends Exception
- * 
- * @author ZendModelCreator ".ZendModelCreator::getVersion()."
- * @licence GNU/GPL V 2.0
- * @contact ".ZendModelCreator::getContact()."
- * @since " . date("Y-m-d") . "
- *
- */
+* " . ucfirst($className) . "ServiceException extends Exception
+* 
+* @author ZendModelCreator ".ZendModelCreator::getVersion()."
+* @licence GNU/GPL V 2.0
+* @contact ".ZendModelCreator::getContact()."
+* @since " . date("Y-m-d") . "
+*
+**/
 
-class ".ucfirst(strtolower($className))."ServiceException extends Exception {
+class ".ucfirst(strtolower($className))."ServiceException extends Exception
+{
 
 	/** 
 	 * Constructor
@@ -48,7 +49,8 @@ class ".ucfirst(strtolower($className))."ServiceException extends Exception {
 	}
 
 	private function _generateContent($className) {
-		$this->_data .= "\tpublic function $className"."ServiceException(\$errorMessage, \$errorCode) {\n";
+		$this->_data .= "\tpublic function $className"."ServiceException(\$errorMessage, \$errorCode)\n";
+		$this->_data .= "\t{\n";
 		$this->_data .= "\t\tparent::__construct ( \$errorMessage, \$errorCode );\n";
 		$this->_data .= "\t}\n\n";
 	}

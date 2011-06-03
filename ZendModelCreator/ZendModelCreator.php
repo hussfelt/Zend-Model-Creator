@@ -24,7 +24,7 @@ class ZendModelCreator {
 	private $_dbcon = null;
 	private $_data = array();
 
-	public static $_version = '1.5.1';
+	public static $_version = '1.5.4';
 	public static $_contact = 'Hussfelt Consulting AB';
 	public static $tables = array();
 

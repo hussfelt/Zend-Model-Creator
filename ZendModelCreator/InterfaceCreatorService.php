@@ -32,16 +32,17 @@ class InterfaceCreatorService {
 		$className = strtolower($className);
 		$this->_data .= "<?php
 /**
- * $className Service API
- * 
- * @author ZendModelCreator ".ZendModelCreator::getVersion()."
- * @licence GNU/GPL V 2.0
- * @contact ".ZendModelCreator::getContact()."
- * @since " . date("Y-m-d") . "
- *
- */
+* " . ucfirst($className) . " Service API
+* 
+* @author ZendModelCreator ".ZendModelCreator::getVersion()."
+* @licence GNU/GPL V 2.0
+* @contact ".ZendModelCreator::getContact()."
+* @since " . date("Y-m-d") . "
+*
+**/
 
-interface I".ucfirst($className)."Service {
+interface I".ucfirst($className)."Service
+{
 
 ";
 	}
