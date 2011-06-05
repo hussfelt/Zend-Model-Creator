@@ -71,19 +71,19 @@ class $className extends GenericDTO
 		$this->_data .= "\t* Class declarations\n";
 		$this->_data .= "\t*/\n";
 		foreach ($params as $param) {
-			foreach ($param as $name => $type) {
-				switch ($type) {
+			foreach ($param as $name => $data) {
+				switch ($data[0]) {
 					case self::$STRING:
-						$this->_data .= "\tprivate \$_".$name." = '';\n";
+						$this->_data .= "\tprivate \$_".$name." = '".$data[1]."';\n";
 						break;
 					case self::$INTEGER:
-						$this->_data .= "\tprivate \$_".$name." = 0;\n";
+						$this->_data .= "\tprivate \$_".$name." = ".($data[1] != "" ? $data[1] : 0).";\n";
 						break;
 					case self::$DATETIME:
-						$this->_data .= "\tprivate \$_".$name." = null;\n";
+						$this->_data .= "\tprivate \$_".$name." = '".($data[1] != "" ? $data[1] : '0000-00-00 00:00:00')."';\n";
 						break;
 					case self::$DOUBLE:
-						$this->_data .= "\tprivate \$_".$name." = null;\n";
+						$this->_data .= "\tprivate \$_".$name." = ".($data[1] != "" ? $data[1] : 0).";\n";
 						break;
 					case self::$ARRAY:
 						$this->_data .= "\tprivate \$_".$name." = array();\n";

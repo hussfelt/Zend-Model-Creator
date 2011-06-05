@@ -109,6 +109,7 @@ class ZendModelCreator {
 			while($row = mysql_fetch_row($result)) {
 				$name = $row[0];
 				$type = $row[1];
+				$default_value = $row[4];
 
 				// if the fourth description is PRI, this is a primary key and is
 				// pushed to self::$table[$tbl]['primary_key']
@@ -129,7 +130,7 @@ class ZendModelCreator {
 				}
 
 				// set to global table
-				$final = array($name => $type);
+				$final = array($name => array($type, $default_value));
 				self::$tables[$tbl]['fields'][] = $final;
 			}
 		}

@@ -131,15 +131,15 @@ class ".$className."DAO extends GenericDAO {
 
 		// Set DTO params with getters and setters
 		foreach ($params as $param) {
-			foreach ($param as $name => $type) {
-				if ($type == self::$DATETIME) {
+			foreach ($param as $name => $data) {
+				if ($data[0] == self::$DATETIME) {
 					$this->_data.="\t\t\t$".strtolower($className).'DTO->set'.ucfirst($name).'(new GenericDateTime($row->'.$name."));\n";
 				} else {
 					$this->_data.="\t\t\t$".strtolower($className).'DTO->set'.ucfirst($name).'($row->'.$name.");\n";
 				}
 				// annoying zendstudio alert.
-				if($type){
-					$type = '';
+				if($data[0]){
+					$data[0] = '';
 				}
 			}
 		}
@@ -172,15 +172,15 @@ class ".$className."DAO extends GenericDAO {
 
 		// Set DTO params with getters and setters
 		foreach ($params as $param) {
-			foreach ($param as $name => $type) {
-				if($type == self::$DATETIME) {
+			foreach ($param as $name => $data) {
+				if($data[0] == self::$DATETIME) {
 					$this->_data.="\t\t\t$".strtolower($className).'DTO->set'.ucfirst($name).'(new GenericDateTime($row->'.$name."));\n";
 				} else {
 					$this->_data.="\t\t\t$".strtolower($className).'DTO->set'.ucfirst($name).'($row->'.$name.");\n";
 				}
 				// annoying zendstudio bug.
-				if($type){
-					$type = '';
+				if($data[0]){
+					$data[0] = '';
 				}
 			}
 		}
@@ -213,16 +213,16 @@ class ".$className."DAO extends GenericDAO {
 		$tmpdata = '';
 		foreach ($params as $param) {
 			$param = array_reverse($param);
-			foreach ($param as $name => $type) {
-				if($type == self::$DATETIME) {
+			foreach ($param as $name => $data) {
+				if($data[0] == self::$DATETIME) {
 					$extra = "->getFormattedDateTime()";
 				} else {
 					$extra = "";
 				}
 				$tmpdata.="\t\t\t'$name'\t\t\t => $".strtolower($className).'->get'.ucfirst($name)."()$extra,\n";
 				// annoying zendstudio bug.
-				if($type){
-					$type = '';
+				if($data[0]){
+					$data[0] = '';
 				}
 			}
 		}
@@ -254,16 +254,16 @@ class ".$className."DAO extends GenericDAO {
 		// Make getters
 		$tmpdata = '';
 		foreach ($params as $param) {
-			foreach ($param as $name => $type) {
-				if($type == self::$DATETIME) {
+			foreach ($param as $name => $data) {
+				if($data[0] == self::$DATETIME) {
 					$extra = "->getFormattedDateTime()";
 				} else {
 					$extra = "";
 				}
 				$tmpdata.="\t\t\t'$name'\t\t\t => $".strtolower($className).'->get'.ucfirst($name)."()$extra,\n";
 				// annoying zendstudio bug.
-				if($type){
-					$type = '';
+				if($data[0]){
+					$data[0] = '';
 				}
 			}
 		}
