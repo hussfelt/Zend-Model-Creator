@@ -123,15 +123,15 @@ class $className extends GenericDTO
 	private function _generateClassGettersSetters($params) {
 		foreach ($params as $param) {
 			foreach ($param as $name => $type) {
-				switch ($type) {
+				switch ($type[0]) {
 					case self::$STRING:
-						$this->_data .= $this->_getGetComment($type, $name);
+						$this->_data .= $this->_getGetComment($type[0], $name);
 						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
-						$this->_data .= $this->_getSetComment($type, $name);
+						$this->_data .= $this->_getSetComment($type[0], $name);
 						$this->_data .= "\tpublic function set".ucfirst($name)."($$name)\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
@@ -139,13 +139,13 @@ class $className extends GenericDTO
 						break;
 
 					case self::$INTEGER:
-						$this->_data .= $this->_getGetComment($type, $name);
+						$this->_data .= $this->_getGetComment($type[0], $name);
 						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
-						$this->_data .= $this->_getSetComment($type, $name);
+						$this->_data .= $this->_getSetComment($type[0], $name);
 						$this->_data .= "\tpublic function set".ucfirst($name)."($$name)\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
@@ -153,13 +153,13 @@ class $className extends GenericDTO
 						break;
 
 					case self::$DATETIME:
-						$this->_data .= $this->_getGetComment($type, $name);
+						$this->_data .= $this->_getGetComment($type[0], $name);
 						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
-						$this->_data .= $this->_getSetComment($type, $name);
+						$this->_data .= $this->_getSetComment($type[0], $name);
 						$this->_data .= "\tpublic function set".ucfirst($name)."(GenericDateTime $$name)\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
@@ -167,13 +167,13 @@ class $className extends GenericDTO
 						break;
 
 					case self::$DOUBLE:
-						$this->_data .= $this->_getGetComment($type, $name);
+						$this->_data .= $this->_getGetComment($type[0], $name);
 						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
-						$this->_data .= $this->_getSetComment($type, $name);
+						$this->_data .= $this->_getSetComment($type[0], $name);
 						$this->_data .= "\tpublic function set".ucfirst($name)."($$name)\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
@@ -181,13 +181,13 @@ class $className extends GenericDTO
 						break;
 
 					case self::$ARRAY:
-						$this->_data .= $this->_getGetComment($type, $name);
+						$this->_data .= $this->_getGetComment($type[0], $name);
 						$this->_data .= "\tpublic function get".ucfirst($name)."()\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\treturn \$this->_$name;";
 						$this->_data .= "\n\t}\n\n";
 
-						$this->_data .= $this->_getSetComment($type, $name);
+						$this->_data .= $this->_getSetComment($type[0], $name);
 						$this->_data .= "\tpublic function set".ucfirst($name)."(array $$name)\n";
 						$this->_data .= "\t{\n";
 						$this->_data .= "\t\t\$this->_$name = $$name;";
@@ -256,7 +256,7 @@ class $className extends GenericDTO
 		foreach ($params as $param) {
 			foreach ($param as $name => $type) {
 				$this->_data .= "\t\tif(isset(\$aData['$name'])) {\n";
-				switch ($type) {
+				switch ($type[0]) {
 					case self::$STRING:
 						$this->_data .= "\t\t\t\$this->set".ucfirst($name)."(\$aData['$name']);\n";
 						break;
@@ -292,7 +292,7 @@ class $className extends GenericDTO
 		$this->_data .= "\t\t\$aDiff = array();\n";
 		foreach ($params as $param) {
 			foreach ($param as $name => $type) {
-				switch ($type) {
+				switch ($type[0]) {
 					case self::$STRING:
 						$this->_data .= "\t\tif(\$this->get".ucfirst($name)."() !== \$aCompare['$name']) {\n\t\t\t\$aDiff['$name'] = array('old' => \$this->get".ucfirst($name)."(), 'new' => \$aCompare['$name']);\n\t\t}\n";
 						break;
