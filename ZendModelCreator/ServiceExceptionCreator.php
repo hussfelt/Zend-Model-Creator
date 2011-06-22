@@ -35,7 +35,7 @@ class ServiceExceptionCreatorService {
 *
 **/
 
-class ".ucfirst(strtolower($className))."ServiceException extends Exception
+class ".substr(str_replace('[tbl]',ucfirst($className),ZendModelCreator::$directoryStructure['FileNames']['EXC']),0,-4)." extends Exception
 {
 
 	/** 

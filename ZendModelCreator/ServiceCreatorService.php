@@ -52,7 +52,7 @@ require_once('$folderName/".ZendModelCreator::$directoryStructure['DirectoryStru
 require_once('$folderName/".ZendModelCreator::$directoryStructure['DirectoryStructure']['EXC']."/".str_replace("[tbl]",ucfirst(strtolower($className)),ZendModelCreator::$directoryStructure['FileNames']['EXC'])."');
 require_once('".ZendModelCreator::$directoryStructure['DirectoryStructure']['CON']."/ErrorConstants.php');
 
-class ".ucfirst(strtolower($className))."Service implements I".ucfirst(strtolower($className))."Service
+class ".substr(str_replace('[tbl]',ucfirst($className),ZendModelCreator::$directoryStructure['FileNames']['SRV']),0,-4)." implements ".substr(str_replace('[tbl]',ucfirst($className),ZendModelCreator::$directoryStructure['FileNames']['INT']),0,-4)."
 {
 
 ";

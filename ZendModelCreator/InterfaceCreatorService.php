@@ -41,7 +41,7 @@ class InterfaceCreatorService {
 *
 **/
 
-interface I".ucfirst($className)."Service
+interface ".substr(str_replace('[tbl]',ucfirst($className),ZendModelCreator::$directoryStructure['FileNames']['INT']),0,-4)."
 {
 
 ";
