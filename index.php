@@ -117,8 +117,6 @@ $SETTINGS['mysql_db'] = "";
 
 // Setup the model creator service with our specified settings
 $ZendModelCreator = new ZendModelCreator($SETTINGS);
-// Get the generated PHP code from our services
-$ZendModelCreator->getDataFromServices();
 
 /**
  * Setup the directory structure you want to use,
@@ -152,6 +150,8 @@ $ZendModelCreator->setDirectoryStructure(
 	)
 );
 
+// Get the generated PHP code from our services
+$ZendModelCreator->getDataFromServices();
 
 /**
  * Either runt getPHPCreatedModelData to get the
